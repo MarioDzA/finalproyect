@@ -19,17 +19,17 @@ class _CreateBoxState extends State<CreateBox> {
       ),
       child: SimpleDialog(
           shape: Border.all(
-            width: 2,
+            width: 1,
             //rgb(238, 238, 238)
             //rgb(48, 56, 65)
             //rgb(58, 71, 80)
             color: Color.fromARGB(255, 58, 71, 80),),
-          backgroundColor: Color.fromARGB(255, 48, 56, 65),
-          title: const Text('Demo',
+          backgroundColor: Color.fromARGB(255, 48, 56, 65).withOpacity(0.7),
+          title: const Text('Uninorte Help',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-              )),
+              ),),
           children: [
             const Padding(
               padding: EdgeInsets.fromLTRB(13, 0, 10, 0),
@@ -102,7 +102,7 @@ class _CreateBoxState extends State<CreateBox> {
                     onTap: () {
                       widget.changeMainPageIndex(0);
                     },
-                    child: const Text('Go back to Log in',
+                    child: const Text('Already registered? Go back to Log In',
                         style: TextStyle(
                           color: Colors.white,
                           decoration: TextDecoration.underline,

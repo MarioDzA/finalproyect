@@ -22,10 +22,10 @@ class _LoginBoxState extends State<LoginBox> {
             //rgb(238, 238, 238) white
             //rgb(48, 56, 65) black
             //rgb(58, 71, 80) grey
-            shape: Border.all(width: 2,color: Color.fromARGB(255, 58, 71, 80),),
-            backgroundColor: Color.fromARGB(255, 48, 56, 65),
-            title: const Text('Demo',style: TextStyle(
-              color: Colors.white),),
+            shape: Border.all(width: 1,color: Color.fromARGB(255, 58, 71, 80),),
+            backgroundColor: Color.fromARGB(255, 48, 56, 65).withOpacity(0.7),
+            title: const Text('Uninorte Help',style: TextStyle(
+              color: Colors.white),textAlign: TextAlign.center),
             children: [
               const Padding(
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
