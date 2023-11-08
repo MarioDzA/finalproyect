@@ -18,7 +18,13 @@ class _CreateBoxState extends State<CreateBox> {
         maxWidth: 450,
       ),
       child: SimpleDialog(
-          backgroundColor: Color.fromARGB(255, 0, 0, 0).withOpacity(0.7),
+          shape: Border.all(
+            width: 2,
+            //rgb(238, 238, 238)
+            //rgb(48, 56, 65)
+            //rgb(58, 71, 80)
+            color: Color.fromARGB(255, 58, 71, 80),),
+          backgroundColor: Color.fromARGB(255, 48, 56, 65),
           title: const Text('Demo',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -44,10 +50,10 @@ class _CreateBoxState extends State<CreateBox> {
                       filled: true,
                       fillColor: Colors.white,
                       prefixIcon: Icon(Icons.person,
-                          color: Color.fromARGB(255, 97, 97, 97)),
+                          color: Color.fromARGB(255, 0, 0, 0)),
                       labelText: 'Name',
                       labelStyle: TextStyle(
-                        color: Color.fromARGB(255, 97, 97, 97),
+                        color: Color.fromARGB(255, 0, 0, 0),
                         fontStyle: FontStyle.normal,
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.never)),
@@ -63,10 +69,10 @@ class _CreateBoxState extends State<CreateBox> {
                       filled: true,
                       fillColor: Colors.white,
                       prefixIcon: Icon(Icons.mail,
-                          color: Color.fromARGB(255, 97, 97, 97)),
+                          color: Color.fromARGB(255, 0, 0, 0)),
                       labelText: 'Email',
                       labelStyle: TextStyle(
-                        color: Color.fromARGB(255, 97, 97, 97),
+                        color: Color.fromARGB(255, 0, 0, 0),
                         fontStyle: FontStyle.normal,
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.never)),
@@ -81,10 +87,10 @@ class _CreateBoxState extends State<CreateBox> {
                       filled: true,
                       fillColor: Colors.white,
                       prefixIcon: Icon(Icons.lock,
-                          color: Color.fromARGB(255, 97, 97, 97)),
+                          color: Color.fromARGB(255, 0, 0, 0)),
                       labelText: 'Password',
                       labelStyle: TextStyle(
-                        color: Color.fromARGB(255, 97, 97, 97),
+                        color: Color.fromARGB(255, 0, 0, 0),
                         fontStyle: FontStyle.normal,
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.never)),
@@ -114,7 +120,8 @@ class _CreateBoxState extends State<CreateBox> {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size.fromHeight(40),
-                        backgroundColor: const Color.fromARGB(255, 2, 155, 69),
+                        //rgb(215, 35, 35)
+                        backgroundColor: Color.fromARGB(255, 215, 35, 35),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16))),
                     child: const Text("Create!",

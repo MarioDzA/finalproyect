@@ -28,13 +28,21 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
+    //return Scaffold(
+    //backgroundColor: Color.fromARGB(255 ,58, 71, 80),
+    //body:
+    //    Center(
+    //     child: screens[mainPageIndex],
+    //    )
+    //   ,
+    //);
     return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-            child: screens[mainPageIndex],
-          )
-        ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('norte2.jpg'), fit: BoxFit.cover),
+        ),
+        child: Center(child: screens[mainPageIndex]),
       ),
     );
   }
