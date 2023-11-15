@@ -17,6 +17,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(onPressed: () {
+          
+        },),
         backgroundColor: Color.fromARGB(255, 48, 56, 65),
         centerTitle: true,
         bottom: const PreferredSize(
@@ -52,12 +55,7 @@ class _HomePageState extends State<HomePage> {
           letIndexChange: (index) => true,),
         body: Container(
           color: Colors.white,
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                Text(_page.toString(), textScaleFactor: 10.0),
-              ],
-            ),
+          child: Center(   
           ),
         ),
     );
