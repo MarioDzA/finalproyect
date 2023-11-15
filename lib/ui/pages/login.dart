@@ -48,6 +48,7 @@ class _LoginBoxState extends State<LoginBox> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
+              //CORREO
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: TextFormField(
@@ -68,6 +69,7 @@ class _LoginBoxState extends State<LoginBox> {
                         ),
                         floatingLabelBehavior: FloatingLabelBehavior.never)),
               ),
+              //CONTRASEÑA
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
                 child: TextFormField(
@@ -94,6 +96,7 @@ class _LoginBoxState extends State<LoginBox> {
                   const SizedBox(
                     width: 0.0,
                   ),
+                  //BOTON SIGN UP
                   ElevatedButton(
                     //Add Functionality
                     onPressed: () => {widget.changeMainPageIndex(1)},
@@ -108,6 +111,7 @@ class _LoginBoxState extends State<LoginBox> {
                           fontWeight: FontWeight.bold,
                         )),
                   ),
+                  //BOTON LOG IN
                   ElevatedButton(
                     //Add Functionality
                     onPressed: () async {
