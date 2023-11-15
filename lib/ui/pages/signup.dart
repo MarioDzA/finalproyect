@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 class CreateBox extends StatefulWidget {
   final Function(int) changeMainPageIndex;
@@ -23,8 +23,8 @@ class _CreateBoxState extends State<CreateBox> {
             //rgb(238, 238, 238)
             //rgb(48, 56, 65)
             //rgb(58, 71, 80)
-            color: Color.fromARGB(255, 58, 71, 80),),
-          backgroundColor: Color.fromARGB(255, 48, 56, 65).withOpacity(0.7),
+            color:const  Color.fromARGB(255, 58, 71, 80),),
+          backgroundColor:const  Color.fromARGB(255, 48, 56, 65).withOpacity(0.7),
           title: const Text('Uninorte Help',
               textAlign: TextAlign.center,
               style: TextStyle(
