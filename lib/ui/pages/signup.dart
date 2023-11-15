@@ -1,6 +1,7 @@
+import 'package:finalproyect/ui/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
 
 class CreateBox extends StatefulWidget {
   final Function(int) changeMainPageIndex;
@@ -10,6 +11,15 @@ class CreateBox extends StatefulWidget {
 }
 
 class _CreateBoxState extends State<CreateBox> {
+  final AuthenticationController authenticationController = Get.find();
+  final namecontroller = TextEditingController();
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
+
+  signUp(String name, user, password) async {
+    await authenticationController.signup(name, user, password);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,13 +33,17 @@ class _CreateBoxState extends State<CreateBox> {
             //rgb(238, 238, 238)
             //rgb(48, 56, 65)
             //rgb(58, 71, 80)
-            color:const  Color.fromARGB(255, 58, 71, 80),),
-          backgroundColor:const  Color.fromARGB(255, 48, 56, 65).withOpacity(0.7),
-          title: const Text('Uninorte Help',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-              ),),
+            color: const Color.fromARGB(255, 58, 71, 80),
+          ),
+          backgroundColor:
+              const Color.fromARGB(255, 48, 56, 65).withOpacity(0.7),
+          title: const Text(
+            'Uninorte Help',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
           children: [
             const Padding(
               padding: EdgeInsets.fromLTRB(13, 0, 10, 0),
@@ -46,6 +60,7 @@ class _CreateBoxState extends State<CreateBox> {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: TextFormField(
+                  controller: namecontroller,
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -62,14 +77,15 @@ class _CreateBoxState extends State<CreateBox> {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
               child: TextFormField(
+                  controller: emailcontroller,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(RegExp("[0-9a-zA-Z@.]"))
                   ],
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.mail,
-                          color: Color.fromARGB(255, 0, 0, 0)),
+                      prefixIcon:
+                          Icon(Icons.mail, color: Color.fromARGB(255, 0, 0, 0)),
                       labelText: 'Email',
                       labelStyle: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
@@ -81,13 +97,14 @@ class _CreateBoxState extends State<CreateBox> {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
               child: TextFormField(
+                  controller: passwordcontroller,
                   obscureText: true,
                   inputFormatters: [LengthLimitingTextInputFormatter(30)],
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.lock,
-                          color: Color.fromARGB(255, 0, 0, 0)),
+                      prefixIcon:
+                          Icon(Icons.lock, color: Color.fromARGB(255, 0, 0, 0)),
                       labelText: 'Password',
                       labelStyle: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
@@ -117,7 +134,19 @@ class _CreateBoxState extends State<CreateBox> {
                   ),
                   // BOTÓN SIGN UP
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      try {
+                        await signUp(
+                            namecontroller.text, emailcontroller.text, passwordcontroller.text);
+                      } catch (e) {
+                        Get.snackbar(
+                          "Sign up",
+                          e.toString(),
+                          icon: const Icon(Icons.person, color: Colors.red),
+                          snackPosition: SnackPosition.BOTTOM,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size.fromHeight(40),
                         //rgb(215, 35, 35)

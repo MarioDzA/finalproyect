@@ -6,7 +6,7 @@ import '../../data/model/user_model.dart';
 import 'auth_controller.dart';
 
 // Controlador usado para manejar los usuarios del chat
-class UserController extends GetxController {
+class AdminController extends GetxController {
   // lista en la que se almacenan los uaurios, la misma es observada por la UI
   var _users = <AppUser>[].obs;
 
