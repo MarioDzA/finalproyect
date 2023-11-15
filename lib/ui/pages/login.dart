@@ -1,3 +1,4 @@
+import 'package:finalproyect/ui/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -10,31 +11,47 @@ class LoginBox extends StatefulWidget {
 }
 
 class _LoginBoxState extends State<LoginBox> {
+  final AuthenticationController authenticationController = Get.find();
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
+
+  login(String user, password) {
+    authenticationController.login(user, password);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: ConstrainedBox(
           constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.7,
-              maxWidth: 400,),
+            maxHeight: MediaQuery.of(context).size.height * 0.7,
+            maxWidth: 400,
+          ),
           child: SimpleDialog(
-            //rgb(215, 35, 35) red 
+            //rgb(215, 35, 35) red
             //rgb(238, 238, 238) white
             //rgb(48, 56, 65) black
             //rgb(58, 71, 80) grey
-            shape: Border.all(width: 1,color: Color.fromARGB(255, 58, 71, 80),),
+            shape: Border.all(
+              width: 1,
+              color: Color.fromARGB(255, 58, 71, 80),
+            ),
             backgroundColor: Color.fromARGB(255, 48, 56, 65).withOpacity(0.7),
-            title: const Text('Uninorte Help',style: TextStyle(
-              color: Colors.white),textAlign: TextAlign.center),
+            title: const Text('Uninorte Help',
+                style: TextStyle(color: Colors.white),
+                textAlign: TextAlign.center),
             children: [
               const Padding(
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Text('Log in',style: TextStyle(
-                color: Colors.white),),
+                child: Text(
+                  'Log in',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: TextFormField(
+                    controller: emailcontroller,
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(
                           RegExp("[0-9a-zA-Z@.]")),
@@ -54,6 +71,7 @@ class _LoginBoxState extends State<LoginBox> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
                 child: TextFormField(
+                    controller: passwordcontroller,
                     obscureText: true,
                     inputFormatters: [LengthLimitingTextInputFormatter(29)],
                     decoration: const InputDecoration(
@@ -66,7 +84,10 @@ class _LoginBoxState extends State<LoginBox> {
                           color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         floatingLabelBehavior: FloatingLabelBehavior.never)),
-              ),SizedBox(height: 10.0,),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -89,7 +110,19 @@ class _LoginBoxState extends State<LoginBox> {
                   ),
                   ElevatedButton(
                     //Add Functionality
-                    onPressed: () => {Get.offNamed('/home_page')},
+                    onPressed: () async {
+                      try {
+                        await login(
+                            emailcontroller.text, passwordcontroller.text);
+                      } catch (e) {
+                        Get.snackbar(
+                          "Login",
+                          e.toString(),
+                          icon: const Icon(Icons.person, color: Colors.red),
+                          snackPosition: SnackPosition.BOTTOM,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size.fromHeight(40),
                         backgroundColor: const Color.fromARGB(255, 215, 35, 35),
