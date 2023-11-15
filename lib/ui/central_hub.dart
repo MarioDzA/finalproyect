@@ -8,9 +8,6 @@ class CentralHub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // aquí dependiendo del estado de autenticación, el cual
-    // obtenemos en el stream, vamos a cargar la interfaz de autenticación
-    // o el UserListPage
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
