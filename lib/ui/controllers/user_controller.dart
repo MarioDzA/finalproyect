@@ -31,7 +31,7 @@ class UserController extends GetxController {
   // método para comenzar a escuchar cambios en la "tabla" userList de la base de
   // datos
   void start() {
-    _users.clear();
+    // _users.clear();
 
     newEntryStreamSubscription =
         databaseRef.child("userList").onChildAdded.listen(_onEntryAdded);
