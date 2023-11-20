@@ -36,11 +36,16 @@ class _AuthPageState extends State<AuthPage> {
     //    )
     //   ,
     //);
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('norte2.jpg'), fit: BoxFit.cover),
+            image: AssetImage(
+              "assets/norte1.jpg",
+            ),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Center(child: screens[mainPageIndex]),
       ),

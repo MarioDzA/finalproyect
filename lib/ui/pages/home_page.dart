@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:loggy/loggy.dart';
 import 'package:get/get.dart';
 
+//IMPORTAR TABS
+import 'package:finalproyect/ui/pages/tabs/help.dart';
+import 'package:finalproyect/ui/pages/tabs/map.dart';
+import 'package:finalproyect/ui/pages/tabs/services.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -15,6 +20,12 @@ class _HomePageState extends State<HomePage> {
   int _page = 0;
   final GlobalKey _bottomNavigationKey = GlobalKey();
   final AuthenticationController authenticationController = Get.find();
+
+  final screens = const [
+    MapTab(),
+    ServicesTab(),
+    HelpTab(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(0.1),
           child: Divider(
-            color: Color.fromARGB(10, 48, 56, 65),
+            color: Color.fromARGB(255, 58, 71, 80),
             height: 0.0,
           ),
         ),
@@ -52,7 +63,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         index: 0,
-        height: 50.0,
+        height: 65.0,
         items: const <Widget>[
           SizedBox(
             height: 45,
@@ -88,6 +99,7 @@ class _HomePageState extends State<HomePage> {
         animationCurve: Curves.ease,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (index) {
+          if (index == 0) {}
           setState(() {
             _page = index;
           });
@@ -96,7 +108,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         color: Colors.white,
-        child: Center(),
+        child: Center(
+          child: screens[_page],
+        ),
       ),
     );
   }

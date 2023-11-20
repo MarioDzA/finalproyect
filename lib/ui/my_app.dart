@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: FlexThemeData.light(
+        fontFamily: "Raleway",
         colors: const FlexSchemeColor(
           primary: Color(0xff004881),
           //primary: Color.fromARGB(255, 28, 130, 173),
