@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'package:finalproyect/data/model/user_model.dart';
 import 'package:finalproyect/ui/controllers/auth_controller.dart';
-import 'package:finalproyect/ui/controllers/user_controller.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
@@ -72,7 +70,7 @@ class ChatController extends GetxController {
   String getChatKey(uidUser1, uidUser2) {
     List<String> uidList = [uidUser1, uidUser2];
     uidList.sort();
-    return uidList[0] + "--" + uidList[1];
+    return "${uidList[0]}--${uidList[1]}";
   }
 
   // creamos la "tabla" de mensajes entre dos usuarios
@@ -106,18 +104,5 @@ class ChatController extends GetxController {
       logError(error);
       return Future.error(error);
     }
-  }
-
-  // en esté método creamos chats inicialies con los que podemos probar la lectura
-  // de mensajes
-  void initializeChats() {
-    UserController userController = Get.find();
-    List<AppUser> users = userController.allUsers();
-    createChat(users[0].uid, users[1].uid, users[0].uid, "Hola B, soy A");
-    createChat(users[1].uid, users[0].uid, users[1].uid, "Hola A, cómo estás?");
-    createChat(users[0].uid, users[2].uid, users[0].uid, "Hola C, soy A");
-    createChat(users[0].uid, users[2].uid, users[2].uid, "Hola A, Cómo estás?");
-    createChat(users[1].uid, users[2].uid, users[1].uid, "Hola C, soy B");
-    createChat(users[2].uid, users[1].uid, users[2].uid, "Todo bien B");
   }
 }

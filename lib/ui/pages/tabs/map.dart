@@ -11,7 +11,7 @@ class _MapTabState extends State<MapTab> {
   Color mainTextColor = Colors.black;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Text("Mapa"),

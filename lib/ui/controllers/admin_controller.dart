@@ -1,14 +1,21 @@
 import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
-import 'package:loggy/loggy.dart';
 import '../../data/model/user_model.dart';
 import 'auth_controller.dart';
 
 // Controlador usado para manejar los usuarios del chat
 class AdminController extends GetxController {
   // lista en la que se almacenan los uaurios, la misma es observada por la UI
-  var _users = <AppUser>[].obs;
+  final _users = <AppUser>[].obs;
+
+  // Reactive variable for the current user's name
+  final userName = ''.obs;
+
+  // Method to set the user's name
+  void setUserName(String name) {
+    userName.value = name;
+  }
 
   final databaseRef = FirebaseDatabase.instance.ref();
 
@@ -27,6 +34,16 @@ class AdminController extends GetxController {
   }
 
   get allUsers => _users;
+
+  void getUserNameByEmail(String email) {
+    for (var i = 0; i < allUsers.length; i++) {
+      if (allUsers[i].email == email) {
+        AppUser user = allUsers[i];
+        setUserName(user.name);
+        break; // Once you find the user, you can exit the loop
+      }
+    }
+  }
 
   // método para comenzar a escuchar cambios en la "tabla" userList de la base de
   // datos
@@ -61,19 +78,5 @@ class AdminController extends GetxController {
 
     final json = event.snapshot.value as Map<dynamic, dynamic>;
     _users[_users.indexOf(oldEntry)] = AppUser.fromJson(event.snapshot, json);
-  }
-
-  // método para crear un nuevo usuario
-  Future<void> createUser(email, uid) async {
-    logInfo("Creating user in realTime for $email and $uid");
-    try {
-      await databaseRef
-          .child('userList')
-          .push()
-          .set({'email': email, 'uid': uid});
-    } catch (error) {
-      logError(error);
-      return Future.error(error);
-    }
   }
 }

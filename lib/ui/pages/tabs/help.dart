@@ -29,10 +29,10 @@ class _HelpTabState extends State<HelpTab> {
 
     var actualemail = authenticationController.userEmail();
     
-    if (actualemail != "supportadmin@gmail.com") {
+    if (actualemail != "admin@uninorte.com") {
       // obtenemos los datos del usuario con el cual se va a iniciar el chat de los argumentos
-      remoteUserUid = "auhf2UKPnCPOuAgtLayZisvFZMl1";
-      remoteEmail = actualemail;
+      remoteUserUid = "rgejbwrBdSQ1fsticV1DZ8IExDm1";
+      remoteEmail = "admin@uninorte.com";
     } else {
       //aqui va codigo del soporte
     }
@@ -58,7 +58,7 @@ class _HelpTabState extends State<HelpTab> {
     return Card(
       margin: const EdgeInsets.all(4.0),
       // cambiamos el color dependiendo de quién mandó el usuario
-      color: uid == element.senderUid ? Colors.yellow[200] : Colors.grey[300],
+      color: uid == element.senderUid ? const Color.fromARGB(255, 169, 255, 157) : Colors.grey[300],
       child: ListTile(
         title: Text(
           element.msg,

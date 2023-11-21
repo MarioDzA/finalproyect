@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'user_controller.dart';
 
 // este controlador esconde los detalles de la implementación de firebase
 class AuthenticationController extends GetxController {
-  final databaseReference = FirebaseDatabase.instance.ref();
 
   // método usado para logearse en la aplicación
   Future<void> login(email, password) async {
@@ -13,6 +11,7 @@ class AuthenticationController extends GetxController {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       return Future.value();
+      
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         return Future.error("User not found");

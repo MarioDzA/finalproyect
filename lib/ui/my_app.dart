@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
       //todo: Implement name routing (initialRoute and getPages parameters)
       initialRoute: "/central_hub",
       getPages: [
-        GetPage(name: "/central_hub", page: () => const CentralHub()),
+        GetPage(name: "/central_hub", page: () => CentralHub()),
         GetPage(name: "/auth_page", page: () => const AuthPage()),
         GetPage(name: "/home_page", page: () => const HomePage()),
       ],

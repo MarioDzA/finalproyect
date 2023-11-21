@@ -1,3 +1,4 @@
+import 'package:finalproyect/ui/controllers/admin_controller.dart';
 import 'package:finalproyect/ui/controllers/auth_controller.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   int _page = 0;
   final GlobalKey _bottomNavigationKey = GlobalKey();
   final AuthenticationController authenticationController = Get.find();
+  final AdminController adminController = Get.find();
 
   final screens = const [
     MapTab(),
@@ -29,37 +31,50 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    _logout() async {
+    logout() async {
       try {
+        adminController.stop();
         await authenticationController.logout();
       } catch (e) {
         logError(e);
       }
     }
 
+    adminController.getUserNameByEmail(authenticationController.userEmail());
+    var name = adminController.userName.value;
+
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
-          onPressed: () {
-            _logout();
-          },
-        ),
-        backgroundColor: const Color.fromARGB(255, 48, 56, 65),
-        centerTitle: true,
-        bottom: const PreferredSize(
-          preferredSize: Size.fromHeight(0.1),
-          child: Divider(
-            color: Color.fromARGB(255, 58, 71, 80),
-            height: 0.0,
+          leading: BackButton(
+            onPressed: () {
+              logout();
+            },
           ),
-        ),
-        title: const Text(
-          'Uninorte Help',
-          style: TextStyle(
-            color: Colors.white,
+          backgroundColor: const Color.fromARGB(255, 48, 56, 65),
+          centerTitle: true,
+          bottom: const PreferredSize(
+            preferredSize: Size.fromHeight(0.1),
+            child: Divider(
+              color: Color.fromARGB(255, 58, 71, 80),
+              height: 0.0,
+            ),
           ),
-        ),
-      ),
+          title: Column(
+            children: [
+              const Text(
+                'Uninorte Help',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                'Welcome back: $name',
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          )),
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         index: 0,
