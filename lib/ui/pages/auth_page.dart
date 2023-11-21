@@ -28,15 +28,6 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    //return Scaffold(
-    //backgroundColor: Color.fromARGB(255 ,58, 71, 80),
-    //body:
-    //    Center(
-    //     child: screens[mainPageIndex],
-    //    )
-    //   ,
-    //);
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(

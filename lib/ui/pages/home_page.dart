@@ -39,11 +39,19 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
-          onPressed: () {
-            _logout();
-          },
-        ),
+        actions: [
+          Column(children: [
+            IconButton(
+              color: Colors.white,
+              onPressed: _logout,
+              icon: const Icon(Icons.logout_outlined),
+            ),
+            const Text(
+              "Logout",
+              style: TextStyle(fontSize: 8, color: Colors.white),
+            ),
+          ])
+        ],
         backgroundColor: const Color.fromARGB(255, 48, 56, 65),
         centerTitle: true,
         bottom: const PreferredSize(
@@ -68,34 +76,49 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 45,
             child: Column(children: [
-              Icon(Icons.travel_explore_outlined, size: 25),
+              Icon(
+                Icons.travel_explore_outlined,
+                size: 25,
+                color: Colors.white,
+              ),
               Text(
                 "Map",
+                style: TextStyle(color: Colors.white),
               )
             ]),
           ),
           SizedBox(
             height: 45,
             child: Column(children: [
-              Icon(Icons.info_outlined, size: 25),
+              Icon(
+                Icons.info_outlined,
+                size: 25,
+                color: Colors.white,
+              ),
               Text(
                 "Services",
+                style: TextStyle(color: Colors.white),
               )
             ]),
           ),
           SizedBox(
             height: 45,
             child: Column(children: [
-              Icon(Icons.contact_support_outlined, size: 25),
+              Icon(
+                Icons.contact_support_outlined,
+                size: 25,
+                color: Colors.white,
+              ),
               Text(
                 "Help",
+                style: TextStyle(color: Colors.white),
               )
             ]),
           ),
         ],
-        color: const Color.fromARGB(255, 58, 71, 80),
-        buttonBackgroundColor: Colors.white,
-        backgroundColor: Colors.transparent,
+        color: const Color.fromARGB(255, 48, 56, 65),
+        buttonBackgroundColor: const Color.fromARGB(255, 58, 71, 80),
+        backgroundColor: const Color.fromARGB(255, 58, 71, 80),
         animationCurve: Curves.ease,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (index) {
@@ -107,7 +130,7 @@ class _HomePageState extends State<HomePage> {
         letIndexChange: (index) => true,
       ),
       body: Container(
-        color: Colors.white,
+        color: const Color.fromARGB(255, 58, 71, 80),
         child: Center(
           child: screens[_page],
         ),

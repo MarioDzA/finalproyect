@@ -3,6 +3,8 @@ import 'package:finalproyect/ui/controllers/admin_controller.dart';
 import 'package:finalproyect/ui/controllers/auth_controller.dart';
 import 'package:finalproyect/ui/controllers/chat_controller.dart';
 import 'package:finalproyect/ui/controllers/user_controller.dart';
+import 'package:finalproyect/ui/pages/auditoriums_page.dart';
+import 'package:finalproyect/ui/pages/restaurant_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -74,6 +76,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/central_hub", page: () => const CentralHub()),
         GetPage(name: "/auth_page", page: () => const AuthPage()),
         GetPage(name: "/home_page", page: () => const HomePage()),
+        GetPage(name: "/restaurant_page", page: () => const RestaurantPage()),
+        GetPage(name: "/auditoriums_page", page: () => const AuditoriumsPage()),
       ],
     );
   }

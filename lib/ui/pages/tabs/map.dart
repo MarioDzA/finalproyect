@@ -12,7 +12,7 @@ class _MapTabState extends State<MapTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       body: Center(
         child: Text("Mapa"),
       ),

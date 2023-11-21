@@ -28,7 +28,7 @@ class _HelpTabState extends State<HelpTab> {
     super.initState();
 
     var actualemail = authenticationController.userEmail();
-    
+
     if (actualemail != "supportadmin@gmail.com") {
       // obtenemos los datos del usuario con el cual se va a iniciar el chat de los argumentos
       remoteUserUid = "auhf2UKPnCPOuAgtLayZisvFZMl1";
@@ -58,9 +58,12 @@ class _HelpTabState extends State<HelpTab> {
     return Card(
       margin: const EdgeInsets.all(4.0),
       // cambiamos el color dependiendo de quién mandó el usuario
-      color: uid == element.senderUid ? Colors.yellow[200] : Colors.grey[300],
+      color: uid == element.senderUid
+          ? const Color.fromARGB(255, 48, 56, 65)
+          : Colors.black,
       child: ListTile(
         title: Text(
+          style: const TextStyle(color: Colors.white),
           element.msg,
           textAlign:
               // cambiamos el textAlign dependiendo de quién mandó el usuario
@@ -103,9 +106,30 @@ class _HelpTabState extends State<HelpTab> {
             child: TextField(
               key: const Key('MsgTextField'),
               decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: Colors.white,
+                )),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: Colors.white,
+                )),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: Colors.white,
+                )),
                 labelText: 'Your message',
+                labelStyle: TextStyle(color: Colors.white),
+                floatingLabelStyle: TextStyle(color: Colors.white),
+                counterStyle: TextStyle(color: Colors.white),
+                fillColor: Color.fromARGB(255, 58, 71, 80),
+                hoverColor: Color.fromARGB(255, 58, 71, 80),
+                focusColor: Color.fromARGB(255, 58, 71, 80),
+                iconColor: Color.fromARGB(255, 58, 71, 80),
+                prefixIconColor: Color.fromARGB(255, 58, 71, 80),
+                suffixIconColor: Color.fromARGB(255, 58, 71, 80),
               ),
+              cursorColor: Colors.white,
               onSubmitted: (value) {
                 _sendMsg(_controller.text);
                 _controller.clear();
@@ -116,7 +140,10 @@ class _HelpTabState extends State<HelpTab> {
         ),
         TextButton(
             key: const Key('sendButton'),
-            child: const Text('Send'),
+            child: const Text(
+              'Send',
+              style: TextStyle(color: Colors.white),
+            ),
             onPressed: () {
               _sendMsg(_controller.text);
               _controller.clear();
@@ -134,7 +161,14 @@ class _HelpTabState extends State<HelpTab> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToEnd());
     return Scaffold(
-        appBar: AppBar(title: Text("Chat with Support")),
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 58, 71, 80),
+          title: const Text("Chat with Support",
+              style: TextStyle(
+                color: Colors.white,
+              )),
+        ),
+        backgroundColor: const Color.fromARGB(255, 58, 71, 80),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 25.0),
           child: Column(
