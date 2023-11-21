@@ -20,18 +20,22 @@ class _HelpTabState extends State<HelpTab> {
   late String remoteUserUid;
   late String remoteEmail;
 
-  // obtenemos los parámetros del sistema de navegación
-  dynamic argumentData = Get.arguments;
-
   // obtenemos las instancias de los controladores
   ChatController chatController = Get.find();
   AuthenticationController authenticationController = Get.find();
   @override
   void initState() {
     super.initState();
-    // obtenemos los datos del usuario con el cual se va a iniciar el chat de los argumentos
-    remoteUserUid = argumentData[0];
-    remoteEmail = argumentData[1];
+
+    var actualemail = authenticationController.userEmail();
+    
+    if (actualemail != "supportadmin@gmail.com") {
+      // obtenemos los datos del usuario con el cual se va a iniciar el chat de los argumentos
+      remoteUserUid = "auhf2UKPnCPOuAgtLayZisvFZMl1";
+      remoteEmail = actualemail;
+    } else {
+      //aqui va codigo del soporte
+    }
 
     // instanciamos los controladores
     _controller = TextEditingController();
