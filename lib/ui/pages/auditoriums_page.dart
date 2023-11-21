@@ -11,8 +11,13 @@ class _AuditoriumsPageState extends State<AuditoriumsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 48, 56, 65),
       appBar: AppBar(
-        title: const Text("Auditoriums"),
+        backgroundColor: const Color.fromARGB(255, 48, 56, 65),
+        title: const Text(
+          "Restaurants",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         leading: BackButton(
           onPressed: () {
@@ -32,12 +37,19 @@ class _AuditoriumsPageState extends State<AuditoriumsPage> {
             child: const Center(
                 child: Column(
               children: [
-                Text("1966", style: TextStyle(fontSize: 30)),
+                Text(
+                  "1966",
+                  style: TextStyle(fontSize: 30, color: Colors.white),
+                ),
                 Text(
                   "Restaurantes parac cocteles y eventos institucionales",
                   softWrap: true,
+                  style: TextStyle(color: Colors.white),
                 ),
-                Text("Ubicado en el segundo pido del bloque F")
+                Text(
+                  "Ubicado en el segundo pido del bloque F",
+                  style: TextStyle(color: Colors.white),
+                )
               ],
             )),
           ),

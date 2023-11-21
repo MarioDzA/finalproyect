@@ -37,12 +37,19 @@ class _RestaurantPageState extends State<RestaurantPage> {
             child: const Center(
                 child: Column(
               children: [
-                Text("1966", style: TextStyle(fontSize: 30)),
+                Text(
+                  "1966",
+                  style: TextStyle(fontSize: 30, color: Colors.white),
+                ),
                 Text(
                   "Restaurantes parac cocteles y eventos institucionales",
                   softWrap: true,
+                  style: TextStyle(color: Colors.white),
                 ),
-                Text("Ubicado en el segundo pido del bloque F")
+                Text(
+                  "Ubicado en el segundo pido del bloque F",
+                  style: TextStyle(color: Colors.white),
+                )
               ],
             )),
           ),
