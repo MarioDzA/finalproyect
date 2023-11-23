@@ -6,7 +6,8 @@ import 'package:loggy/loggy.dart';
 import 'package:get/get.dart';
 
 //IMPORTAR TABS
-import 'package:finalproyect/ui/pages/tabs/help.dart';
+// import 'package:finalproyect/ui/pages/tabs/help.dart';
+import 'package:finalproyect/ui/pages/tabs/chatlist.dart';
 import 'package:finalproyect/ui/pages/tabs/map.dart';
 import 'package:finalproyect/ui/pages/tabs/services.dart';
 
@@ -26,11 +27,13 @@ class _HomePageState extends State<HomePage> {
   final screens = const [
     MapTab(),
     ServicesTab(),
-    HelpTab(),
+    ChatList(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    adminController.getUserNameByEmail(authenticationController.userEmail());
+
     logout() async {
       try {
         adminController.stop();
@@ -40,34 +43,33 @@ class _HomePageState extends State<HomePage> {
       }
     }
 
-    adminController.getUserNameByEmail(authenticationController.userEmail());
     var name = adminController.userName.value;
 
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          Column(children: [
-            IconButton(
-              color: Colors.white,
-              onPressed: logout,
-              icon: const Icon(Icons.logout_outlined),
+          actions: [
+            Column(children: [
+              IconButton(
+                color: Colors.white,
+                onPressed: logout,
+                icon: const Icon(Icons.logout_outlined),
+              ),
+              const Text(
+                "Logout",
+                style: TextStyle(fontSize: 8, color: Colors.white),
+              ),
+            ])
+          ],
+          backgroundColor: const Color.fromARGB(255, 48, 56, 65),
+          centerTitle: true,
+          bottom: const PreferredSize(
+            preferredSize: Size.fromHeight(0.1),
+            child: Divider(
+              color: Color.fromARGB(255, 58, 71, 80),
+              height: 0.0,
             ),
-            const Text(
-              "Logout",
-              style: TextStyle(fontSize: 8, color: Colors.white),
-            ),
-          ])
-        ],
-        backgroundColor: const Color.fromARGB(255, 48, 56, 65),
-        centerTitle: true,
-        bottom: const PreferredSize(
-          preferredSize: Size.fromHeight(0.1),
-          child: Divider(
-            color: Color.fromARGB(255, 58, 71, 80),
-            height: 0.0,
           ),
-        ),
-        title: Column(
+          title: Column(
             children: [
               const Text(
                 'Uninorte Help',
@@ -137,6 +139,7 @@ class _HomePageState extends State<HomePage> {
         animationCurve: Curves.ease,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (index) {
+          
           if (index == 0) {}
           setState(() {
             _page = index;

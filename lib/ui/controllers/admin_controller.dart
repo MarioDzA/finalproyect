@@ -12,10 +12,6 @@ class AdminController extends GetxController {
   // Reactive variable for the current user's name
   final userName = ''.obs;
 
-  // Method to set the user's name
-  void setUserName(String name) {
-    userName.value = name;
-  }
 
   final databaseRef = FirebaseDatabase.instance.ref();
 
@@ -39,8 +35,8 @@ class AdminController extends GetxController {
     for (var i = 0; i < allUsers.length; i++) {
       if (allUsers[i].email == email) {
         AppUser user = allUsers[i];
-        setUserName(user.name);
-        break; // Once you find the user, you can exit the loop
+        userName.value = user.name;
+        break;
       }
     }
   }

@@ -6,8 +6,9 @@ import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
 class HelpTab extends StatefulWidget {
-  const HelpTab({super.key});
+  const HelpTab({super.key, required this.arguments});
 
+  final List<String> arguments;
   @override
   State<HelpTab> createState() => _HelpTabState();
 }
@@ -27,15 +28,8 @@ class _HelpTabState extends State<HelpTab> {
   void initState() {
     super.initState();
 
-    var actualemail = authenticationController.userEmail();
-    
-    if (actualemail != "admin@uninorte.com") {
-      // obtenemos los datos del usuario con el cual se va a iniciar el chat de los argumentos
-      remoteUserUid = "rgejbwrBdSQ1fsticV1DZ8IExDm1";
-      remoteEmail = "admin@uninorte.com";
-    } else {
-      //aqui va codigo del soporte
-    }
+    remoteUserUid = widget.arguments[0];
+    remoteEmail = widget.arguments[1];
 
     // instanciamos los controladores
     _controller = TextEditingController();
@@ -131,8 +125,11 @@ class _HelpTabState extends State<HelpTab> {
               ),
               cursorColor: Colors.white,
               onSubmitted: (value) {
-                _sendMsg(_controller.text);
-                _controller.clear();
+                if (_controller.text.isNotEmpty &
+                    !stringVacio(_controller.text)) {
+                  _sendMsg(_controller.text);
+                  _controller.clear();
+                }
               },
               controller: _controller,
             ),
@@ -145,8 +142,11 @@ class _HelpTabState extends State<HelpTab> {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              _sendMsg(_controller.text);
-              _controller.clear();
+              if (_controller.text.isNotEmpty &
+                  !stringVacio(_controller.text)) {
+                _sendMsg(_controller.text);
+                _controller.clear();
+              }
             })
       ],
     );
@@ -176,4 +176,8 @@ class _HelpTabState extends State<HelpTab> {
           ),
         ));
   }
+}
+
+bool stringVacio(String cadena) {
+  return cadena.trim().isEmpty;
 }
