@@ -2,7 +2,7 @@ import 'package:finalproyect/ui/pages/auditoriums_page.dart';
 import 'package:finalproyect/ui/pages/restaurant_page.dart';
 import 'package:finalproyect/ui/pages/service_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 //import 'package:get/get.dart';
 
 class ServicesTab extends StatefulWidget {
