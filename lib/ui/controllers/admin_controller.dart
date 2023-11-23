@@ -54,9 +54,9 @@ class AdminController extends GetxController {
   }
 
   // método para dejar de escuchar cambios
-  void stop() {
-    newEntryStreamSubscription.cancel();
-    updateEntryStreamSubscription.cancel();
+  Future stop() async {
+    await newEntryStreamSubscription.cancel();
+    await updateEntryStreamSubscription.cancel();
   }
 
   // cuando obtenemos un evento con un nuevo usuario lo agregamos a _users

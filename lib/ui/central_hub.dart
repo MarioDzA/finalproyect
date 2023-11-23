@@ -14,7 +14,6 @@ class CentralHub extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            adminController.start();
             return const HomePage();
           } else {
             return const AuthPage();
