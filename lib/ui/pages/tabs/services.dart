@@ -1,5 +1,9 @@
+import 'package:finalproyect/ui/pages/auditoriums_page.dart';
+import 'package:finalproyect/ui/pages/restaurant_page.dart';
+import 'package:finalproyect/ui/pages/service_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+//import 'package:get/get.dart';
 
 class ServicesTab extends StatefulWidget {
   const ServicesTab({super.key});
@@ -10,54 +14,26 @@ class ServicesTab extends StatefulWidget {
 
 class _ServicesTabState extends State<ServicesTab> {
   Color mainTextColor = Colors.black;
+  static int mainPageIndex = 0;
+  final screens = <Widget>[];
+  @override
+  void initState() {
+    super.initState();
+    screens.add(ServicePage(changeMainPageIndex: changeMainPageIndex));
+    screens.add(RestaurantPage(changeMainPageIndex: changeMainPageIndex));
+    screens.add(AuditoriumsPage(changeMainPageIndex: changeMainPageIndex));
+  }
+
+  void changeMainPageIndex(int newIndex) {
+    setState(() {
+      mainPageIndex = newIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 58, 71, 80),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 200,
-              width: 400,
-              child: OutlinedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 48, 56, 65)),
-                  onPressed: () {
-                    Get.offNamed("/restaurant_page");
-                  },
-                  child: const Text("Restaurants",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Raleway",
-                        color: Colors.white,
-                      ))),
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            SizedBox(
-              height: 200,
-              width: 400,
-              child: OutlinedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 48, 56, 65)),
-                  onPressed: () {
-                    Get.offNamed("/auditoriums_page");
-                  },
-                  child: const Text(
-                    "Auditoriums",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Raleway",
-                        color: Colors.white),
-                  )),
-            )
-          ],
-        ),
-      ),
+      body: Center(child: screens[mainPageIndex]),
     );
   }
 }

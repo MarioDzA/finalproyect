@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuditoriumsPage extends StatefulWidget {
-  const AuditoriumsPage({super.key});
+  final Function(int) changeMainPageIndex;
+  const AuditoriumsPage({super.key, required this.changeMainPageIndex});
   @override
   State<AuditoriumsPage> createState() => _AuditoriumsPageState();
 }
@@ -21,7 +22,7 @@ class _AuditoriumsPageState extends State<AuditoriumsPage> {
         centerTitle: true,
         leading: BackButton(
           onPressed: () {
-            Get.offNamed("/central_hub");
+            widget.changeMainPageIndex(0);
           },
         ),
       ),

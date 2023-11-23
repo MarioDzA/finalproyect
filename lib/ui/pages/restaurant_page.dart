@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RestaurantPage extends StatefulWidget {
-  const RestaurantPage({super.key});
+  final Function(int) changeMainPageIndex;
+  const RestaurantPage({super.key, required this.changeMainPageIndex});
   @override
   State<RestaurantPage> createState() => _RestaurantPageState();
 }
@@ -20,7 +21,7 @@ class _RestaurantPageState extends State<RestaurantPage> {
         centerTitle: true,
         leading: BackButton(
           onPressed: () {
-            Get.offNamed("/central_hub");
+            widget.changeMainPageIndex(0);
           },
         ),
       ),

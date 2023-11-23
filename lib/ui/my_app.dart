@@ -76,8 +76,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/central_hub", page: () => CentralHub()),
         GetPage(name: "/auth_page", page: () => const AuthPage()),
         GetPage(name: "/home_page", page: () => const HomePage()),
-        GetPage(name: "/restaurant_page", page: () => const RestaurantPage()),
-        GetPage(name: "/auditoriums_page", page: () => const AuditoriumsPage()),
       ],
     );
   }

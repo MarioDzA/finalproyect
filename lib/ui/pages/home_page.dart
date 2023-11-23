@@ -59,17 +59,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
           actions: [
-            Column(children: [
-              IconButton(
-                color: Colors.white,
-                onPressed: logout,
-                icon: const Icon(Icons.logout_outlined),
-              ),
-              const Text(
-                "Logout",
-                style: TextStyle(fontSize: 8, color: Colors.white),
-              ),
-            ])
+            IconButton(
+              color: Colors.white,
+              onPressed: logout,
+              icon: const Icon(Icons.logout_outlined),
+            ),
           ],
           backgroundColor: const Color.fromARGB(255, 48, 56, 65),
           centerTitle: true,
