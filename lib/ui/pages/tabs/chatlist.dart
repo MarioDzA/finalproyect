@@ -84,11 +84,6 @@ class _ChatListState extends State<ChatList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("Chat"),
-          actions: const [],
-        ),
-        body: _list());
+    return Scaffold(body: _list());
   }
 }

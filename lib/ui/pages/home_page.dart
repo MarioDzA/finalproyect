@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.logout_outlined),
             ),
           ],
-          backgroundColor: const Color.fromARGB(255, 48, 56, 65),
+          backgroundColor: const Color.fromARGB(255, 187, 28, 7),
           centerTitle: true,
           bottom: const PreferredSize(
             preferredSize: Size.fromHeight(0.1),
