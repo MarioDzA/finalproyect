@@ -42,7 +42,7 @@ class _RestaurantPageState extends State<RestaurantPage> {
                   style: TextStyle(fontSize: 30, color: Colors.white),
                 ),
                 Text(
-                  "Restaurantes parac cocteles y eventos institucionales",
+                  "Restaurantes para cocteles y eventos institucionales",
                   softWrap: true,
                   style: TextStyle(color: Colors.white),
                 ),
