@@ -54,7 +54,7 @@ class AdminController extends GetxController {
   }
 
   // método para dejar de escuchar cambios
-  Future stop() async {
+  void stop() async {
     await newEntryStreamSubscription.cancel();
     await updateEntryStreamSubscription.cancel();
   }

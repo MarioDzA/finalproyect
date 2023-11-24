@@ -31,18 +31,6 @@ class _HomePageState extends State<HomePage> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    adminController.start();
-  }
-
-  @override
-  void dispose() async {
-    super.dispose();
-    await adminController.stop();
-  }
-
-  @override
   Widget build(BuildContext context) {
     adminController.getUserNameByEmail(authenticationController.userEmail());
 
