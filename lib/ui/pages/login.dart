@@ -87,9 +87,19 @@ class _LoginBoxState extends State<LoginBox> {
                         ),
                         floatingLabelBehavior: FloatingLabelBehavior.never)),
               ),
-              SizedBox(
-                height: 10.0,
-              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(14, 10, 0, 20),
+                child: GestureDetector(
+                    onTap: () {
+                      widget.changeMainPageIndex(1);
+                    },
+                    child: const Text('Not registered yet? Create an account',
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.white,
+                          fontStyle: FontStyle.normal,
+                        )))),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -97,7 +107,7 @@ class _LoginBoxState extends State<LoginBox> {
                     width: 0.0,
                   ),
                   //BOTON SIGN UP
-                  ElevatedButton(
+/*                   ElevatedButton(
                     //Add Functionality
                     onPressed: () => {widget.changeMainPageIndex(1)},
                     style: ElevatedButton.styleFrom(
@@ -110,7 +120,7 @@ class _LoginBoxState extends State<LoginBox> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         )),
-                  ),
+                  ), */
                   //BOTON LOG IN
                   ElevatedButton(
                     //Add Functionality

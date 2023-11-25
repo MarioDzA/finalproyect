@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
       ),
-      darkTheme: FlexThemeData.dark(
+      darkTheme: FlexThemeData.dark(fontFamily: 'Raleway',
         colors: const FlexSchemeColor(
           primary: Color(0xff9fc9ff),
           primaryContainer: Color(0xff00325b),

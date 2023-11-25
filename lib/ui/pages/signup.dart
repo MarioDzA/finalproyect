@@ -150,7 +150,7 @@ class _CreateBoxState extends State<CreateBox> {
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size.fromHeight(40),
                         //rgb(215, 35, 35)
-                        backgroundColor: Color.fromARGB(255, 215, 35, 35),
+                        backgroundColor: const Color.fromARGB(255, 215, 35, 35),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16))),
                     child: const Text("Create!",
