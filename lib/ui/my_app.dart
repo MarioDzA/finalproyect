@@ -2,6 +2,7 @@ import 'package:finalproyect/ui/central_hub.dart';
 import 'package:finalproyect/ui/controllers/admin_controller.dart';
 import 'package:finalproyect/ui/controllers/auth_controller.dart';
 import 'package:finalproyect/ui/controllers/chat_controller.dart';
+import 'package:finalproyect/ui/controllers/location_controller.dart';
 import 'package:finalproyect/ui/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
     Get.put(AdminController());
     Get.put(AuthenticationController());
     Get.put(UserController());
+    Get.put(LocationController());
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
