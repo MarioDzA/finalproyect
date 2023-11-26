@@ -59,51 +59,63 @@ class _RestaurantPageState extends State<RestaurantPage> {
                         padding: EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            ...csvData!.skip(1).map(
-                              (csvrow) => Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.grey.shade200,
-                                      ),
-                                      color: Colors.grey.shade200,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Container(
-                                          child: Text(
-                                            '${csvrow[0]}',
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 30,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Text(
-                                            '${csvrow[1]}',
-                                            style: const TextStyle(fontSize: 20),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Text(
-                                            'Ubicación: ${csvrow[2]}',
-                                            style: const TextStyle(fontSize: 20),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5), // Add a 10-pixel gap
-                                ],
-                              ),
+                            SizedBox(
+                              height: 10,
                             ),
+                            ...csvData!.skip(1).map(
+                                  (csvrow) => Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                            color: Colors.grey.shade200,
+                                          ),
+                                          color: Colors.grey.shade400,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: Colors.black26,
+                                              offset: Offset(0, 2),
+                                              blurRadius: 4.0,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Text(
+                                              '${csvrow[0]}',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              '${csvrow[1]}',
+                                              style:
+                                                  const TextStyle(fontSize: 20),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              'Ubicación: ${csvrow[2]}',
+                                              style:
+                                                  const TextStyle(fontSize: 20),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Image(
+                                                image: NetworkImage(
+                                                    '${csvrow[3]}'))
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                          height: 10), // Add a 10-pixel gap
+                                    ],
+                                  ),
+                                ),
                             const SizedBox(height: 18),
                           ],
                         ),
