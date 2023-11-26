@@ -1,3 +1,4 @@
+import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 
 class AuditoriumsPage extends StatefulWidget {
@@ -8,14 +9,33 @@ class AuditoriumsPage extends StatefulWidget {
 }
 
 class _AuditoriumsPageState extends State<AuditoriumsPage> {
+  List<List<dynamic>>? csvData;
+  List<String>? headers;
+
+  @override
+  void initState() {
+    super.initState();
+    loadCsvData();
+  }
+
+  Future<void> loadCsvData() async {
+    var result = await DefaultAssetBundle.of(context).loadString(
+      "assets/places.csv",
+    );
+    csvData = const CsvToListConverter().convert(result, eol: "\n");
+    if (csvData != null && csvData!.isNotEmpty) {
+      headers = List<String>.from(csvData![0]);
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 48, 56, 65),
         title: const Text(
-          "Restaurants",
+          "Points of interest",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -25,39 +45,85 @@ class _AuditoriumsPageState extends State<AuditoriumsPage> {
           },
         ),
       ),
+      backgroundColor: Colors.white,
       body: Center(
-          child: ListView(
-        padding: const EdgeInsets.all(8.0),
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Color.fromARGB(255, 548, 56, 65)),
-                color: const Color.fromARGB(255, 58, 71, 80)),
-            height: 100,
-            child: const Center(
-                child: Column(
-              children: [
-                Text(
-                  "1966",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 30, color: Colors.white),
-                ),
-                Text(
-                  "Restaurantes para cocteles y eventos institucionales",
-                  textAlign: TextAlign.center,
-                  softWrap: true,
-                  style: TextStyle(color: Colors.white),
-                ),
-                Text(
-                  "Ubicado en el segundo pido del bloque F",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
-                )
-              ],
-            )),
-          ),
-        ],
-      )),
+        child: ListView(children: [
+          Center(
+            child: csvData != null
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            ...csvData!.skip(1).map(
+                                  (csvrow) => Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                            color: Colors.grey.shade200,
+                                          ),
+                                          color: Colors.grey.shade400,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: Colors.black26,
+                                              offset: Offset(0, 2),
+                                              blurRadius: 4.0,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Text(
+                                              '${csvrow[0]}',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              '${csvrow[1]}',
+                                              style:
+                                                  const TextStyle(fontSize: 20),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              'Ubicación: ${csvrow[2]}',
+                                              style:
+                                                  const TextStyle(fontSize: 20),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Image(
+                                                image: NetworkImage(
+                                                    '${csvrow[3]}'))
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                          height: 10), // Add a 10-pixel gap
+                                    ],
+                                  ),
+                                ),
+                            const SizedBox(height: 18),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                : const SizedBox(),
+          )
+        ]),
+      ),
     );
   }
 }

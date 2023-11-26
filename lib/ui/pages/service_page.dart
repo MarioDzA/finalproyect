@@ -48,7 +48,7 @@ class _ServicePageState extends State<ServicePage> {
                   onPressed: () {
                     widget.changeMainPageIndex(2);
                   },
-                  child: const Text("Auditoriums",
+                  child: const Text("Points of interest",
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: "Raleway",

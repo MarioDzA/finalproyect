@@ -56,10 +56,10 @@ class _RestaurantPageState extends State<RestaurantPage> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             ...csvData!.skip(1).map(
