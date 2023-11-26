@@ -11,7 +11,7 @@ class _ServicePageState extends State<ServicePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 58, 71, 80),
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +21,9 @@ class _ServicePageState extends State<ServicePage> {
               width: 400,
               child: OutlinedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 48, 56, 65)),
+                      side: const BorderSide(color: Colors.white),
+                      backgroundColor:
+                          const Color.fromARGB(255, 226, 222, 222)),
                   onPressed: () {
                     widget.changeMainPageIndex(1);
                   },
@@ -29,7 +31,7 @@ class _ServicePageState extends State<ServicePage> {
                       style: TextStyle(
                         fontSize: 20,
                         fontFamily: "Raleway",
-                        color: Colors.white,
+                        color: Colors.black,
                       ))),
             ),
             const SizedBox(
@@ -40,7 +42,9 @@ class _ServicePageState extends State<ServicePage> {
               width: 400,
               child: OutlinedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 48, 56, 65)),
+                      side: const BorderSide(color: Colors.white),
+                      backgroundColor:
+                          const Color.fromARGB(255, 226, 222, 222)),
                   onPressed: () {
                     widget.changeMainPageIndex(2);
                   },
@@ -48,7 +52,7 @@ class _ServicePageState extends State<ServicePage> {
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: "Raleway",
-                          color: Colors.white))),
+                          color: Colors.black))),
             )
           ],
         ),

@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
         letIndexChange: (index) => true,
       ),
       body: Container(
-        color: const Color.fromARGB(255, 58, 71, 80),
+        color: Colors.white,
         child: Center(
           child: screens[_page],
         ),

@@ -1,5 +1,6 @@
 import 'package:finalproyect/data/model/block_model.dart';
 import 'package:finalproyect/ui/controllers/location_controller.dart';
+import 'package:finalproyect/ui/pages/blockinfo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,13 +30,14 @@ class _MapTabState extends State<MapTab> {
       margin: const EdgeInsets.all(4.0),
       child: ListTile(
         onTap: () {
-          // Get.to(() => "Insertar tab para mostrar eso aqui"(arguments: [
-          //       element.id,
-          //       element.name,
-          //       element.description,
-          //       element.howto,
-          //       element.img,
-          //     ]));
+          Get.to(BlockInfoPage(
+              arguments:           [
+            element.id.toString(),
+            element.name,
+            element.description,
+            element.howto,
+            element.img,
+          ]));
         },
         title: Text(
           element.name,

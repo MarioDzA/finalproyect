@@ -132,6 +132,7 @@ class _HelpTabState extends State<HelpTab> {
                 }
               },
               controller: _controller,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
