@@ -103,8 +103,7 @@ class _PlacesPageState extends State<PlacesPage> {
                                                   const TextStyle(fontSize: 20),
                                               textAlign: TextAlign.center,
                                             ),
-                                            Image(
-                                                image: NetworkImage(
+                                            Image.network((
                                                     '${csvrow[3]}'))
                                           ],
                                         ),

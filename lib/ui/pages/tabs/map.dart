@@ -74,7 +74,7 @@ class _MapTabState extends State<MapTab> {
         child: Column(children: [
           const Image(
             image: AssetImage(
-              "/nortemap.png",
+              "assets/nortemap.png",
             ),
             fit: BoxFit.cover,
           ),
