@@ -1,14 +1,14 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 
-class AuditoriumsPage extends StatefulWidget {
+class PlacesPage extends StatefulWidget {
   final Function(int) changeMainPageIndex;
-  const AuditoriumsPage({super.key, required this.changeMainPageIndex});
+  const PlacesPage({super.key, required this.changeMainPageIndex});
   @override
-  State<AuditoriumsPage> createState() => _AuditoriumsPageState();
+  State<PlacesPage> createState() => _PlacesPageState();
 }
 
-class _AuditoriumsPageState extends State<AuditoriumsPage> {
+class _PlacesPageState extends State<PlacesPage> {
   List<List<dynamic>>? csvData;
   List<String>? headers;
 

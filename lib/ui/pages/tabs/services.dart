@@ -1,4 +1,4 @@
-import 'package:finalproyect/ui/pages/auditoriums_page.dart';
+import 'package:finalproyect/ui/pages/places_page.dart';
 import 'package:finalproyect/ui/pages/restaurant_page.dart';
 import 'package:finalproyect/ui/pages/service_page.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class _ServicesTabState extends State<ServicesTab> {
     super.initState();
     screens.add(ServicePage(changeMainPageIndex: changeMainPageIndex));
     screens.add(RestaurantPage(changeMainPageIndex: changeMainPageIndex));
-    screens.add(AuditoriumsPage(changeMainPageIndex: changeMainPageIndex));
+    screens.add(PlacesPage(changeMainPageIndex: changeMainPageIndex));
   }
 
   void changeMainPageIndex(int newIndex) {
