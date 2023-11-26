@@ -33,7 +33,7 @@ class _AuthPageState extends State<AuthPage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              "assets/norte1.jpg",
+              "assets/norte1.png",
             ),
             fit: BoxFit.cover,
           ),

@@ -68,8 +68,8 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/norte1.jpg
-    - assets/norte2.jpg
+    - assets/norte1.png
+    - assets/norte2.png
     - assets/restaurants.csv
   # To add assets to your application, add an assets section, like this:
   # assets:
