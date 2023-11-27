@@ -27,12 +27,21 @@ class _ServicePageState extends State<ServicePage> {
                   onPressed: () {
                     widget.changeMainPageIndex(1);
                   },
-                  child: const Text("Restaurants",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Raleway",
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Restaurants ",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "Raleway",
+                            color: Colors.black,
+                          )),
+                      Icon(
+                        Icons.restaurant,
                         color: Colors.black,
-                      ))),
+                      )
+                    ],
+                  )),
             ),
             const SizedBox(
               height: 100,
@@ -48,11 +57,21 @@ class _ServicePageState extends State<ServicePage> {
                   onPressed: () {
                     widget.changeMainPageIndex(2);
                   },
-                  child: const Text("Points of interest",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "Raleway",
-                          color: Colors.black))),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Points of Interest ",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "Raleway",
+                            color: Colors.black,
+                          )),
+                      Icon(
+                        Icons.flag_sharp,
+                        color: Colors.black,
+                      )
+                    ],
+                  )),
             )
           ],
         ),

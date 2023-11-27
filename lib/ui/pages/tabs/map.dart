@@ -26,6 +26,7 @@ class _MapTabState extends State<MapTab> {
   @override
   void initState() {
     locationController.startlocation();
+    _setupMap();
     super.initState();
   }
 
@@ -33,6 +34,13 @@ class _MapTabState extends State<MapTab> {
   void dispose() {
     locationController.stopLocation();
     super.dispose();
+  }
+
+  void _setupMap() async {
+    await locationController.getLocation();
+    setState(() {
+      markers = locationController.getMarkers();
+    });
   }
 
   Widget _item(AppBlock element) {
