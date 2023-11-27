@@ -11,4 +11,5 @@ class Configuration {
   static const messagingSenderId = "15243182837"; //no lo vamos a usar
   static const appId = "1:15243182837:web:ed03970d558640cbdafbbc"; // tomado de mobilesdk_app_id
   static const measurementId = ""; //no lo vamos a usar
+  static const mapapikey = "AIzaSyAB0blvvQmOl_SFtQMSkx0en80atFqNNMQ";
 }

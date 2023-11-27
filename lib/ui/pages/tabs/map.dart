@@ -3,6 +3,7 @@ import 'package:finalproyect/ui/controllers/location_controller.dart';
 import 'package:finalproyect/ui/pages/blockinfo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapTab extends StatefulWidget {
   const MapTab({super.key});
@@ -12,7 +13,16 @@ class MapTab extends StatefulWidget {
 }
 
 class _MapTabState extends State<MapTab> {
+  Set<Marker> markers = {};
+
   LocationController locationController = Get.find();
+  final LatLng _center = const LatLng(11.019316882971111, -74.8502691602245);
+
+  late GoogleMapController mapController;
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   @override
   void initState() {
     locationController.startlocation();
@@ -30,8 +40,7 @@ class _MapTabState extends State<MapTab> {
       margin: const EdgeInsets.all(4.0),
       child: ListTile(
         onTap: () {
-          Get.to(BlockInfoPage(
-              arguments:           [
+          Get.to(BlockInfoPage(arguments: [
             element.id.toString(),
             element.name,
             element.description,
@@ -59,6 +68,7 @@ class _MapTabState extends State<MapTab> {
         itemCount: locationController.blocks.length,
         itemBuilder: (context, index) {
           var element = locationController.blocks[index];
+          markers = locationController.getMarkers();
           return _item(element);
         },
       );
@@ -67,20 +77,33 @@ class _MapTabState extends State<MapTab> {
 
   Color mainTextColor = Colors.black;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(children: [
-          const Image(
-            image: AssetImage(
-              "assets/nortemap.png",
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(children: [
+            Expanded(
+              child: GoogleMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target: _center,
+                  zoom: 17.0,
+                ),
+                markers: {
+                  Marker(
+                      markerId: const MarkerId("Me"),
+                      position: LatLng(
+                          locationController.userLocation.value.latitude,
+                          locationController.userLocation.value.longitude),
+                      infoWindow: const InfoWindow(
+                        title: "Me",
+                        snippet: "Me",
+                      )),
+                },
+                // Add more markers as needed
+              ),
             ),
-            fit: BoxFit.cover,
-          ),
-          Expanded(child: _list())
-        ]),
-      ),
-    );
-  }
+            Expanded(child: _list())
+          ]),
+        ),
+      );
 }
